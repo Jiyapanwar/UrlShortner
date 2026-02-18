@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        min-height: 100vh;
+
+        /* PERFECT CENTER FOR ALL DEVICES */
+        display: grid;
+        place-items: center;
+
+        padding: 20px;
+
+        /* EARTHY SOFT BACKGROUND */
+        background: linear-gradient(135deg, #e7e2d8, #d6d3c9, #f1efe8);
+      }
+
+      /* CARD */
+
+      .card {
+        width: 100%;
+        max-width: 460px;
+
+        padding: 48px 42px;
+
+        border-radius: 22px;
+
+        background: #fbfaf7;
+
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08),
+          0 3px 8px rgba(0, 0, 0, 0.04);
+
+        text-align: center;
+      }
+
+      /* HEADING */
+
+      h1 {
+        margin-bottom: 28px;
+        font-weight: 600;
+        color: #3f3f37;
+        letter-spacing: 0.3px;
+      }
+
+      /* LABEL */
+
+      label {
+        display: block;
+        margin-bottom: 12px;
+        font-size: 14px;
+        color: #5a5a50;
+      }
+
+      /* INPUT */
+
+      input {
+        width: 100%;
+        padding: 16px;
+
+        border-radius: 13px;
+        border: 1px solid #d9d6cc;
+
+        background: white;
+
+        font-size: 15px;
+
+        /* CENTER TEXT INITIALLY */
+        text-align: center;
+
+        transition: 0.25s;
+      }
+
+      input:focus {
+        outline: none;
+
+        /* move cursor left when typing */
+        text-align: left;
+
+        border-color: #7a846e;
+        box-shadow: 0 0 0 4px rgba(122, 132, 110, 0.15);
+      }
+
+      /* BUTTON */
+
+      button {
+        margin-top: 22px;
+        width: 100%;
+        padding: 16px;
+
+        border: none;
+        border-radius: 13px;
+
+        background: linear-gradient(90deg, #6f7d5c, #8b9a73);
+
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+
+        cursor: pointer;
+        transition: 0.25s;
+      }
+
+      button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+      }
+
+      /* RESULT */
+
+      .result {
+        margin-top: 26px;
+        padding: 16px;
+
+        border-radius: 12px;
+        background: #f4f2ec;
+
+        font-size: 15px;
+        word-break: break-all;
+      }
+
+      .result a {
+        color: #55614a;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .result a:hover {
+        text-decoration: underline;
+      }
+
+      /* MOBILE OPTIMIZATION */
+
+      @media (max-width: 600px) {
+        .card {
+          padding: 34px 26px;
+          border-radius: 18px;
+        }
+
+        h1 {
+          font-size: 22px;
+        }
+
+        input {
+          padding: 14px;
+          font-size: 14px;
+        }
+
+        button {
+          padding: 14px;
+          font-size: 15px;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .card {
+          padding: 26px 18px;
+        }
+
+        h1 {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <h1>🔗 URL Shortener</h1>
+
+      <form action="/short" method="POST">
+        <label for="longUrl">Paste your long URL</label>
+
+        <input
+          type="text"
+          id="longUrl"
+          name="longUrl"
+          placeholder="https://example.com/very-long-url"
+          required
+        />
+
+        <button type="submit">Shorten URL</button>
+      </form>
+
+      <% if(shortUrl) { %>
+
+      <div class="result">
+        Short URL : <a href="<%= shortUrl %>" target="_blank"><%= shortUrl %>/>
+      </div>
+
+      <% } %>
+    </div>
+  </body>
+</html>
