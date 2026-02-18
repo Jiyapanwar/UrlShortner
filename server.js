@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import { shortUrl, getOriginalUrl } from "./controllers/url.js";
+import { shortUrl, getOriginalUrl } from "./Controllers/url.js";
 import dotenv from "dotenv";
 
 dotenv.config();
