@@ -6,7 +6,7 @@ export const shortUrl = async (req, res) => {
   const longUrl = req.body.longUrl;
   const shortCode = shortid.generate();
 
-  const shortUrl = `http://localhost:3000/${shortCode}`;
+  const shortUrl = `${process.env.BASE_URL}/${shortCode}`;
 
   const newUrl = new Url({ shortCode, longUrl });
   //database mai store karenge ek longUrl ke respect mai konsa shortCode hai
