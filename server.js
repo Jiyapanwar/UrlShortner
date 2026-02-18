@@ -1,18 +1,18 @@
 import express from "express";
 import mongoose from "mongoose";
 import { shortUrl, getOriginalUrl } from "./controllers/url.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 
 mongoose
-  .connect(
-    "mongodb+srv://jiyapanwar2424_db_user:bUJ14BXpIOKsgiyw@cluster0.ckqnnfm.mongodb.net/",
-    {
-      dbName: "UrlShortner",
-    }
-  )
+  .connect(process.env.CONNECTION_URI, {
+    dbName: "UrlShortner",
+  })
   .then(() => console.log("MongoDB Connected..!"))
   .catch((err) => console.log(err));
 
